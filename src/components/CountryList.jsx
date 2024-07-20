@@ -46,9 +46,3 @@ function CountryList() {
 
 export default CountryList;
 
-// Descripción:
-// useState: Permite crear variables que guardan el estado (datos que cambian) dentro del componente.
-// useEffect: Permite ejecutar código cuando el componente se monta o actualiza, como cargar datos de una API.
-// fetchCountries: Función para obtener la lista de países desde un servidor.
-// navigate(-1): Permite volver a la página anterior.
-// Campo de búsqueda: Permite filtrar la lista de países según lo que escribas.

@@ -19,7 +19,3 @@ function Home() {
 }
 
 export default Home;
-
-// Descripción:
-// Link: Componente de navegación que permite crear enlaces dentro de la aplicación.
-// Enlaces de navegación: Permite a los usuarios acceder a la lista de países y la página de información.

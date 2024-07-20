@@ -34,9 +34,3 @@ function CountryDetail() {
 }
 
 export default CountryDetail;
-
-// Descripción:
-// useParams: Permite acceder a los parámetros de la URL, como el ID del país.
-// useNavigate: Permite manejar la navegación hacia atrás.
-// setCountry: Actualiza el estado con los detalles del país seleccionado.
-// Condición de carga: Muestra un mensaje de "Cargando..." mientras se obtienen los datos del país.

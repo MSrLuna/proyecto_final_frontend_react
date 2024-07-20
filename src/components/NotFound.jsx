@@ -20,7 +20,3 @@ function NotFound() {
 
 export default NotFound;
 
-// Descripción:
-// useNavigate: Permite manejar la navegación. En este caso, para redirigir al usuario a la página de inicio cuando la URL no se encuentra.
-// Botón de retroceso: Permite regresar a la página principal de la aplicación.
-// <h1> y <p>: Muestran un mensaje de error indicando que la página no fue encontrada.
