@@ -24,6 +24,7 @@ function CountryDetail() {
 
   return (
     <div>
+      <button onClick={() => navigate(-1)}>Ir hacia atrás</button> {/* Botón para volver a la página anterior */}
       <h1>{country.nombre}</h1>
       <p>Capital: {country.capital}</p>
       <p>Población: {country.datos.poblacion}</p>
@@ -34,3 +35,8 @@ function CountryDetail() {
 }
 
 export default CountryDetail;
+
+// Modificación Día 2: 
+// - Verificado el uso de useParams y useEffect para manejar correctamente los detalles del país.
+// - Añadido un comentario explicativo sobre la carga y visualización de los detalles del país.
+// - Añadido un botón "Ir hacia atrás" para permitir al usuario volver a la página anterior.

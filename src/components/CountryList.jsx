@@ -27,6 +27,7 @@ function CountryList() {
 
   return (
     <div>
+      <button onClick={() => navigate('/')}>Ir hacia atrás</button> {/* Botón para volver a la página de inicio */}
       <input
         type="text"
         value={searchTerm}
@@ -46,3 +47,7 @@ function CountryList() {
 
 export default CountryList;
 
+// Modificación Día 2: 
+// - Ajustado el filtrado de búsqueda para asegurar que el término de búsqueda se maneje de manera más eficiente.
+// - Añadido un comentario explicativo sobre el filtrado y la búsqueda.
+// - Añadido un botón "Ir hacia atrás" para permitir al usuario volver a la página de inicio.

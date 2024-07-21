@@ -13,3 +13,5 @@ export const fetchCountries = async () => {
   }
 };
 
+// Modificación Día 2: 
+// - Revisión del manejo de errores en la solicitud de la API.
