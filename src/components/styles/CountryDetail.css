@@ -1,0 +1,18 @@
+/* Estilos para los detalles del país */
+.country-detail {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  .country-detail h2 {
+    color: #4caf50;
+  }
+  
+  .country-detail p {
+    margin: 10px 0;
+  }
+  

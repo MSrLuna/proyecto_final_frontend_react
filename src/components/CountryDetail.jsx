@@ -1,10 +1,16 @@
 // src/components/CountryDetail.jsx
 
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { fetchCountries } from '../api';
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { fetchCountries } from "../api";
+import "../components/styles/CountryDetail.css"
 
-// Componente que muestra los detalles de un país seleccionado
+// Día 3: Funciones auxiliares para manejar el localStorage
+const getLocalCountries = () => {
+  const savedCountries = localStorage.getItem("countries");
+  return savedCountries ? JSON.parse(savedCountries) : [];
+};
+
 function CountryDetail() {
   const { id } = useParams(); // Obtener el ID del país desde la URL
   const [country, setCountry] = useState(null);
@@ -13,8 +19,19 @@ function CountryDetail() {
   // Cargar los detalles del país cuando el componente se monta o el ID cambia
   useEffect(() => {
     const loadCountry = async () => {
-      const data = await fetchCountries();
-      const countryData = data.find(country => country.id === parseInt(id));
+      const apiCountries = await fetchCountries();
+      const localCountries = getLocalCountries();
+      const allCountries = [...apiCountries, ...localCountries]; // Día 3: Modificado para mayor claridad
+
+      // Día 3: Agregar console.log para depuración
+      console.log("All countries:", allCountries);
+      
+      const countryData = allCountries.find((country) => country.id === parseInt(id));
+      
+      // Día 3: Agregar console.log para depuración
+      console.log("Selected country ID:", id);
+      console.log("Selected country data:", countryData);
+
       setCountry(countryData);
     };
     loadCountry();
@@ -24,7 +41,8 @@ function CountryDetail() {
 
   return (
     <div>
-      <button onClick={() => navigate(-1)}>Ir hacia atrás</button> {/* Botón para volver a la página anterior */}
+      <button onClick={() => navigate(-1)}>Ir hacia atrás</button>{" "}
+      {/* Botón para volver a la página anterior */}
       <h1>{country.nombre}</h1>
       <p>Capital: {country.capital}</p>
       <p>Población: {country.datos.poblacion}</p>
@@ -35,8 +53,3 @@ function CountryDetail() {
 }
 
 export default CountryDetail;
-
-// Modificación Día 2: 
-// - Verificado el uso de useParams y useEffect para manejar correctamente los detalles del país.
-// - Añadido un comentario explicativo sobre la carga y visualización de los detalles del país.
-// - Añadido un botón "Ir hacia atrás" para permitir al usuario volver a la página anterior.

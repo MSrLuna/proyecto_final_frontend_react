@@ -1,0 +1,26 @@
+/* Estilos para el formulario de edición */
+.edit-country {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  .edit-country h2 {
+    color: #4caf50;
+  }
+  
+  .edit-country input[type="text"] {
+    margin-bottom: 10px;
+  }
+  
+  .edit-country button {
+    background-color: #2196f3;
+  }
+  
+  .edit-country button:hover {
+    background-color: #1976d2;
+  }
+  

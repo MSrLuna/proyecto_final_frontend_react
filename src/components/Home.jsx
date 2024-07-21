@@ -1,7 +1,8 @@
 // src/components/Home.jsx
 
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import "../components/styles/main.css"; // Importar CSS general
 
 // Componente de inicio con enlaces a otras secciones de la aplicación
 function Home() {
@@ -10,8 +11,12 @@ function Home() {
       <h1>Bienvenido a mi Página Web de Países y Capitales</h1>
       <nav>
         <ul>
-          <li><Link to="/countries">Lista de Países</Link></li>
-          <li><Link to="/about">Acerca de</Link></li>
+          <li>
+            <Link to="/countries">Lista de Países</Link>
+          </li>
+          <li>
+            <Link to="/about">Acerca de</Link>
+          </li>
         </ul>
       </nav>
     </div>

@@ -1,0 +1,15 @@
+/* Estilos para la página 404 */
+.not-found {
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .not-found h1 {
+    font-size: 100px;
+    color: #f44336;
+  }
+  
+  .not-found p {
+    font-size: 24px;
+  }
+  

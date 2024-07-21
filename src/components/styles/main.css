@@ -1,0 +1,84 @@
+/* Estilos globales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff;
+    color: #333;
+  }
+  
+  .App {
+    text-align: center;
+  }
+  
+  button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  input[type="text"] {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 80%;
+    max-width: 400px;
+  }
+  
+/* Estilo global */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Estilos para el botón de editar */
+.edit-button {
+  .delete-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #f44336; /* Color verde para el botón de eliminar */
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+}
+
+.edit-button:hover {
+  background-color: #388e3c; /* Color verde oscuro para el hover */
+}
+
+/* Otros estilos de botones */
+.delete-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #f44336; /* Color rojo para el botón de eliminar */
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #c62828; /* Color rojo oscuro para el hover */
+}
