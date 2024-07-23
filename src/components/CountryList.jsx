@@ -1,25 +1,26 @@
 // src/components/CountryList.jsx
 
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { fetchCountries } from "../api";
-import "../components/styles/CountryList.css"
+import React, { useState, useEffect } from "react"; // Importa React, y los hooks useState y useEffect
+import { Link, useNavigate } from "react-router-dom"; // Importa Link y useNavigate para navegación
+import { fetchCountries } from "../api"; // Importa la función fetchCountries para obtener países desde la API
+import "../components/styles/CountryList.css" // Importa el archivo CSS específico para estilos del componente
 
-// Día 3: Funciones auxiliares para manejar el localStorage
+// Función auxiliar para obtener países desde el localStorage
 const getLocalCountries = () => {
-  const savedCountries = localStorage.getItem("countries");
-  return savedCountries ? JSON.parse(savedCountries) : [];
+  const savedCountries = localStorage.getItem("countries"); // Obtiene los países guardados en localStorage
+  return savedCountries ? JSON.parse(savedCountries) : []; // Si hay datos, los parsea de JSON a objeto; si no, retorna un array vacío
 };
 
+// Función auxiliar para guardar países en el localStorage
 const saveLocalCountries = (countries) => {
-  localStorage.setItem("countries", JSON.stringify(countries));
+  localStorage.setItem("countries", JSON.stringify(countries)); // Guarda los países en localStorage, convirtiéndolos a JSON
 };
 
 // Componente que muestra una lista de países con un campo de búsqueda
 function CountryList() {
-  const [countries, setCountries] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [newCountry, setNewCountry] = useState({
+  const [countries, setCountries] = useState([]); // Estado para manejar la lista de países
+  const [searchTerm, setSearchTerm] = useState(""); // Estado para manejar el término de búsqueda
+  const [newCountry, setNewCountry] = useState({ // Estado para manejar la información del nuevo país
     id: '',
     nombre: '',
     capital: '',
@@ -28,16 +29,16 @@ function CountryList() {
       idioma: '',
       moneda: ''
     }
-  }); // Día 3: Estado para manejar la creación de nuevos países
-  const navigate = useNavigate(); // Hook para la navegación
+  });
+  const navigate = useNavigate(); // Hook para navegación programática
 
-  // Día 3: Cargar la lista de países cuando el componente se monta
+  // useEffect para cargar los países cuando el componente se monta
   useEffect(() => {
     const loadCountries = async () => {
-      const apiCountries = await fetchCountries(); // Día 3: Obtener países de la API
-      const localCountries = getLocalCountries(); // Día 3: Obtener países del localStorage
+      const apiCountries = await fetchCountries(); // Obtiene los países desde la API
+      const localCountries = getLocalCountries(); // Obtiene los países desde localStorage
 
-      // Día 3: Combinar los países de la API y los del localStorage sin duplicados
+      // Combina los países de la API y localStorage, eliminando duplicados
       const allCountries = [
         ...apiCountries,
         ...localCountries.filter(
@@ -45,24 +46,24 @@ function CountryList() {
         )
       ];
 
-      setCountries(allCountries); // Día 3: Actualizar el estado con la lista combinada de países
+      setCountries(allCountries); // Actualiza el estado con la lista combinada de países
     };
-    loadCountries();
+    loadCountries(); // Llama a la función para cargar los países
   }, []); // Dependencias vacías, se ejecuta solo una vez cuando el componente se monta
 
-  // Filtrar países basados en el término de búsqueda
+  // Filtra los países basados en el término de búsqueda
   const filteredCountries = countries.filter(
     (country) =>
-      country.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      country.capital.toLowerCase().includes(searchTerm.toLowerCase())
+      country.nombre.toLowerCase().includes(searchTerm.toLowerCase()) || // Compara el nombre del país
+      country.capital.toLowerCase().includes(searchTerm.toLowerCase()) // Compara la capital del país
   );
 
-  // Día 3: Manejar la creación de un nuevo país
+  // Función para manejar la adición de un nuevo país
   const handleAddCountry = () => {
-    const newCountries = [...countries, { ...newCountry, id: Date.now() }];
-    setCountries(newCountries);
-    saveLocalCountries(newCountries);
-    setNewCountry({
+    const newCountries = [...countries, { ...newCountry, id: Date.now() }]; // Crea un nuevo país con un id único
+    setCountries(newCountries); // Actualiza el estado con la nueva lista de países
+    saveLocalCountries(newCountries); // Guarda la lista actualizada en localStorage
+    setNewCountry({ // Resetea el formulario de nuevo país
       id: '',
       nombre: '',
       capital: '',
@@ -71,20 +72,19 @@ function CountryList() {
         idioma: '',
         moneda: ''
       }
-    }); // Resetear el formulario
+    });
   };
 
-  // Día 3: Manejar la eliminación de un país
+  // Función para manejar la eliminación de un país
   const handleDeleteCountry = (id) => {
-    const newCountries = countries.filter((country) => country.id !== id);
-    setCountries(newCountries);
-    saveLocalCountries(newCountries);
+    const newCountries = countries.filter((country) => country.id !== id); // Filtra el país a eliminar
+    setCountries(newCountries); // Actualiza el estado con la lista filtrada
+    saveLocalCountries(newCountries); // Guarda la lista actualizada en localStorage
   };
 
   return (
     <div>
-      <button onClick={() => navigate("/")}>Ir hacia atrás</button>{" "}
-      {/* Botón para volver a la página de inicio */}
+      <button onClick={() => navigate("/")}>Ir hacia atrás</button>{" "} {/* Botón para navegar a la página de inicio */}
       <input
         type="text"
         value={searchTerm}
@@ -92,7 +92,6 @@ function CountryList() {
         placeholder="Buscar país"
       />
 
-      {/* Día 3: Sección para añadir nuevos países */}
       <h2>Añadir Nuevo País</h2>
       <input
         type="text"
@@ -138,10 +137,9 @@ function CountryList() {
       <ul>
         {filteredCountries.map((country, index) => (
           <li key={index}>
-            <Link to={`/countries/${country.id}`}>{country.nombre}</Link>
-            {/* Día 3: Añadido un enlace para editar países */}
-            <Link to={`/countries/edit/${country.id}`} className="btn edit-btn">Editar</Link>
-            <button onClick={() => handleDeleteCountry(country.id)} className="btn delete-button">Eliminar</button>
+            <Link to={`/countries/${country.id}`}>{country.nombre}</Link> {/* Enlace para ver detalles del país */}
+            <Link to={`/countries/edit/${country.id}`} className="btn edit-btn">Editar</Link> {/* Enlace para editar el país */}
+            <button onClick={() => handleDeleteCountry(country.id)} className="btn delete-button">Eliminar</button> {/* Botón para eliminar el país */}
           </li>
         ))}
       </ul>
@@ -150,14 +148,3 @@ function CountryList() {
 }
 
 export default CountryList;
-
-// Modificación Día 2:
-// - Ajustado el filtrado de búsqueda para asegurar que el término de búsqueda se maneje de manera más eficiente.
-// - Añadido un comentario explicativo sobre el filtrado y la búsqueda.
-// - Añadido un botón "Ir hacia atrás" para permitir al usuario volver a la página de inicio.
-
-// Modificación Día 3:
-// - Añadida la funcionalidad para agregar un nuevo país con campos adicionales (población, idioma, moneda) y guardar los cambios en localStorage.
-// - Añadida la funcionalidad para eliminar un país y actualizar localStorage.
-// - Eliminación de duplicados entre países de la API y localStorage para una lista combinada sin repeticiones.
-// - Añadido un enlace para editar países.
