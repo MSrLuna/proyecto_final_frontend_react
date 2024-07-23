@@ -216,8 +216,18 @@ function About() {
           países.
         </li>
       </ul>
-      <h2>Día 4:</h2>
-      <p>Nada Aún</p>
+      <h2>Día 4: Explicaciones Detalladas del Código</h2>
+      <ul>
+        <li>
+          Se añadieron comentarios detallados a los archivos de código{" "}
+          <code>.js</code> y <code>.jsx</code>, explicando
+          cada línea del código para mejorar la comprensión.
+        </li>
+        <li>
+          Se creó un documento Word con explicaciones detalladas del código,
+          incluyendo fragmentos específicos para ilustrar cada punto.
+        </li>
+      </ul>
       <h2>Día 5:</h2>
       <p>Nada Aún</p>
       <h5>Atentamente, Franco Luna</h5>
