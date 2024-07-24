@@ -232,7 +232,14 @@ function About() {
         </li>
       </ul>
       <h2>Día 5:</h2>
-      <p>Nada Aún</p>
+      <ul>
+        <li>Se ordenaron los códigos con la extensión Prettier.</li>
+        <li>
+          Se eliminó línea de código (
+          <code>const apiCountries = await fetchCountries();</code>) que estaba
+          sin uso debido a actualizaciones anteriores
+        </li>
+      </ul>
       <h5>Atentamente, Franco Luna</h5>
     </div>
   );
