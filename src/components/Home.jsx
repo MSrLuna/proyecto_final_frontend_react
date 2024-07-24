@@ -8,14 +8,17 @@ import "../components/styles/main.css"; // Importa el archivo CSS general para a
 function Home() {
   return (
     <div>
-      <h1>Bienvenido a mi Página Web de Países y Capitales</h1> {/* Encabezado principal de la página */}
+      <h1>Bienvenido a mi Página Web de Países y Capitales</h1>{" "}
+      {/* Encabezado principal de la página */}
       <nav>
         <ul>
           <li>
-            <Link to="/countries">Lista de Países</Link> {/* Enlace a la página de lista de países */}
+            <Link to="/countries">Lista de Países</Link>{" "}
+            {/* Enlace a la página de lista de países */}
           </li>
           <li>
-            <Link to="/about">Acerca de</Link> {/* Enlace a la página de "Acerca de" */}
+            <Link to="/about">Acerca de</Link>{" "}
+            {/* Enlace a la página de "Acerca de" */}
           </li>
         </ul>
       </nav>

@@ -8,9 +8,12 @@ import "../components/styles/NotFound.css"; // Importa el CSS específico para e
 function NotFound() {
   return (
     <div>
-      <h1>404 - No Encontrado</h1> {/* Título que indica que la página no fue encontrada */}
-      <p>La página que estás buscando no existe.</p> {/* Mensaje informativo para el usuario */}
-      <br /> {/* Salto de línea para separar el mensaje del contenido siguiente */}
+      <h1>404 - No Encontrado</h1>{" "}
+      {/* Título que indica que la página no fue encontrada */}
+      <p>La página que estás buscando no existe.</p>{" "}
+      {/* Mensaje informativo para el usuario */}
+      <br />{" "}
+      {/* Salto de línea para separar el mensaje del contenido siguiente */}
       <img
         src="https://giphy.com/clips/ThisIsMashed-animation-gaming-cartoon-1hGu7ketlpuuWjwvMA" // URL de la imagen GIF que se muestra
         alt="Not Found" // Texto alternativo para la imagen, usado si la imagen no se puede cargar

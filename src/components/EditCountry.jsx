@@ -10,10 +10,10 @@ import "../components/styles/EditCountry.css"; // Importa el CSS específico par
 function EditCountry() {
   const { id } = useParams(); // Obtiene el ID del país desde los parámetros de la URL
   const [country, setCountry] = useState(null); // Estado para almacenar los datos del país cargado
-  const [editCountry, setEditCountry] = useState({ 
-    nombre: '', 
-    capital: '', 
-    datos: { poblacion: '', idioma: '', moneda: '' } 
+  const [editCountry, setEditCountry] = useState({
+    nombre: "",
+    capital: "",
+    datos: { poblacion: "", idioma: "", moneda: "" },
   }); // Estado para almacenar los datos del país que se está editando
   const navigate = useNavigate(); // Hook para la navegación programática
 
@@ -25,7 +25,9 @@ function EditCountry() {
       const localCountries = getLocalCountries(); // Obtiene los países almacenados localmente
       const allCountries = [...apiCountries, ...localCountries]; // Combina los países de la API y los locales
 
-      const countryData = allCountries.find((country) => country.id === parseInt(id)); // Busca el país correspondiente al ID en la lista combinada
+      const countryData = allCountries.find(
+        (country) => country.id === parseInt(id)
+      ); // Busca el país correspondiente al ID en la lista combinada
       setCountry(countryData); // Actualiza el estado con los datos del país encontrado
       if (countryData) {
         setEditCountry(countryData); // Si se encuentra el país, establece el estado para edición
@@ -38,8 +40,8 @@ function EditCountry() {
   const handleUpdateCountry = async () => {
     const apiCountries = await fetchCountries(); // Vuelve a obtener los países de la API
     const localCountries = getLocalCountries(); // Obtiene los países locales
-    const updatedCountries = localCountries.map((c) =>
-      c.id === parseInt(id) ? { ...editCountry, id: parseInt(id) } : c // Actualiza el país editado en la lista de países locales
+    const updatedCountries = localCountries.map(
+      (c) => (c.id === parseInt(id) ? { ...editCountry, id: parseInt(id) } : c) // Actualiza el país editado en la lista de países locales
     );
     saveLocalCountries(updatedCountries); // Guarda la lista actualizada de países locales
     navigate(`/countries/${id}`); // Redirige a la vista de detalles del país editado
@@ -50,42 +52,62 @@ function EditCountry() {
 
   return (
     <div>
-      <button onClick={() => navigate(-1)}>Ir hacia atrás</button> {/* Botón para volver a la página anterior */}
+      <button onClick={() => navigate(-1)}>Ir hacia atrás</button>{" "}
+      {/* Botón para volver a la página anterior */}
       <h1>Editar País</h1>
       {/* Campo de entrada para editar el nombre del país */}
       <input
         type="text"
         placeholder="Nombre"
         value={editCountry.nombre}
-        onChange={(e) => setEditCountry({ ...editCountry, nombre: e.target.value })}
+        onChange={(e) =>
+          setEditCountry({ ...editCountry, nombre: e.target.value })
+        }
       />
       {/* Campo de entrada para editar la capital del país */}
       <input
         type="text"
         placeholder="Capital"
         value={editCountry.capital}
-        onChange={(e) => setEditCountry({ ...editCountry, capital: e.target.value })}
+        onChange={(e) =>
+          setEditCountry({ ...editCountry, capital: e.target.value })
+        }
       />
       {/* Campo de entrada para editar la población del país */}
       <input
         type="text"
         placeholder="Población"
         value={editCountry.datos.poblacion}
-        onChange={(e) => setEditCountry({ ...editCountry, datos: { ...editCountry.datos, poblacion: e.target.value } })}
+        onChange={(e) =>
+          setEditCountry({
+            ...editCountry,
+            datos: { ...editCountry.datos, poblacion: e.target.value },
+          })
+        }
       />
       {/* Campo de entrada para editar el idioma del país */}
       <input
         type="text"
         placeholder="Idioma"
         value={editCountry.datos.idioma}
-        onChange={(e) => setEditCountry({ ...editCountry, datos: { ...editCountry.datos, idioma: e.target.value } })}
+        onChange={(e) =>
+          setEditCountry({
+            ...editCountry,
+            datos: { ...editCountry.datos, idioma: e.target.value },
+          })
+        }
       />
       {/* Campo de entrada para editar la moneda del país */}
       <input
         type="text"
         placeholder="Moneda"
         value={editCountry.datos.moneda}
-        onChange={(e) => setEditCountry({ ...editCountry, datos: { ...editCountry.datos, moneda: e.target.value } })}
+        onChange={(e) =>
+          setEditCountry({
+            ...editCountry,
+            datos: { ...editCountry.datos, moneda: e.target.value },
+          })
+        }
       />
       {/* Botón para guardar los cambios realizados en el país */}
       <button onClick={handleUpdateCountry}>Actualizar País</button>

@@ -180,7 +180,10 @@ function About() {
           </li>
         </ul>
       </ul>
-      <h2>Día 3: Corrección de Errores y Faltas, más Archivos CSS Hechos por IA Agregados</h2>
+      <h2>
+        Día 3: Corrección de Errores y Faltas, más Archivos CSS Hechos por IA
+        Agregados
+      </h2>
       <ul>
         <li>
           Se agregó la funcionalidad de edición completa en el componente{" "}
@@ -220,8 +223,8 @@ function About() {
       <ul>
         <li>
           Se añadieron comentarios detallados a los archivos de código{" "}
-          <code>.js</code> y <code>.jsx</code>, explicando
-          cada línea del código para mejorar la comprensión.
+          <code>.js</code> y <code>.jsx</code>, explicando cada línea del código
+          para mejorar la comprensión.
         </li>
         <li>
           Se creó un documento Word con explicaciones detalladas del código,

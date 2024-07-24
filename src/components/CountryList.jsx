@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react"; // Importa React, y los hooks useState y useEffect
 import { Link, useNavigate } from "react-router-dom"; // Importa Link y useNavigate para navegación
 import { fetchCountries } from "../api"; // Importa la función fetchCountries para obtener países desde la API
-import "../components/styles/CountryList.css" // Importa el archivo CSS específico para estilos del componente
+import "../components/styles/CountryList.css"; // Importa el archivo CSS específico para estilos del componente
 
 // Función auxiliar para obtener países desde el localStorage
 const getLocalCountries = () => {
@@ -20,15 +20,16 @@ const saveLocalCountries = (countries) => {
 function CountryList() {
   const [countries, setCountries] = useState([]); // Estado para manejar la lista de países
   const [searchTerm, setSearchTerm] = useState(""); // Estado para manejar el término de búsqueda
-  const [newCountry, setNewCountry] = useState({ // Estado para manejar la información del nuevo país
-    id: '',
-    nombre: '',
-    capital: '',
+  const [newCountry, setNewCountry] = useState({
+    // Estado para manejar la información del nuevo país
+    id: "",
+    nombre: "",
+    capital: "",
     datos: {
-      poblacion: '',
-      idioma: '',
-      moneda: ''
-    }
+      poblacion: "",
+      idioma: "",
+      moneda: "",
+    },
   });
   const navigate = useNavigate(); // Hook para navegación programática
 
@@ -42,8 +43,11 @@ function CountryList() {
       const allCountries = [
         ...apiCountries,
         ...localCountries.filter(
-          (localCountry) => !apiCountries.some(apiCountry => apiCountry.id === localCountry.id)
-        )
+          (localCountry) =>
+            !apiCountries.some(
+              (apiCountry) => apiCountry.id === localCountry.id
+            )
+        ),
       ];
 
       setCountries(allCountries); // Actualiza el estado con la lista combinada de países
@@ -63,15 +67,16 @@ function CountryList() {
     const newCountries = [...countries, { ...newCountry, id: Date.now() }]; // Crea un nuevo país con un id único
     setCountries(newCountries); // Actualiza el estado con la nueva lista de países
     saveLocalCountries(newCountries); // Guarda la lista actualizada en localStorage
-    setNewCountry({ // Resetea el formulario de nuevo país
-      id: '',
-      nombre: '',
-      capital: '',
+    setNewCountry({
+      // Resetea el formulario de nuevo país
+      id: "",
+      nombre: "",
+      capital: "",
       datos: {
-        poblacion: '',
-        idioma: '',
-        moneda: ''
-      }
+        poblacion: "",
+        idioma: "",
+        moneda: "",
+      },
     });
   };
 
@@ -84,62 +89,81 @@ function CountryList() {
 
   return (
     <div>
-      <button onClick={() => navigate("/")}>Ir hacia atrás</button>{" "} {/* Botón para navegar a la página de inicio */}
+      <button onClick={() => navigate("/")}>Ir hacia atrás</button>{" "}
+      {/* Botón para navegar a la página de inicio */}
       <input
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Buscar país"
       />
-
       <h2>Añadir Nuevo País</h2>
       <input
         type="text"
         placeholder="Nombre"
         value={newCountry.nombre}
-        onChange={(e) => setNewCountry({ ...newCountry, nombre: e.target.value })}
+        onChange={(e) =>
+          setNewCountry({ ...newCountry, nombre: e.target.value })
+        }
       />
       <input
         type="text"
         placeholder="Capital"
         value={newCountry.capital}
-        onChange={(e) => setNewCountry({ ...newCountry, capital: e.target.value })}
+        onChange={(e) =>
+          setNewCountry({ ...newCountry, capital: e.target.value })
+        }
       />
       <input
         type="text"
         placeholder="Población"
         value={newCountry.datos.poblacion}
-        onChange={(e) => setNewCountry({
-          ...newCountry,
-          datos: { ...newCountry.datos, poblacion: e.target.value }
-        })}
+        onChange={(e) =>
+          setNewCountry({
+            ...newCountry,
+            datos: { ...newCountry.datos, poblacion: e.target.value },
+          })
+        }
       />
       <input
         type="text"
         placeholder="Idioma"
         value={newCountry.datos.idioma}
-        onChange={(e) => setNewCountry({
-          ...newCountry,
-          datos: { ...newCountry.datos, idioma: e.target.value }
-        })}
+        onChange={(e) =>
+          setNewCountry({
+            ...newCountry,
+            datos: { ...newCountry.datos, idioma: e.target.value },
+          })
+        }
       />
       <input
         type="text"
         placeholder="Moneda"
         value={newCountry.datos.moneda}
-        onChange={(e) => setNewCountry({
-          ...newCountry,
-          datos: { ...newCountry.datos, moneda: e.target.value }
-        })}
+        onChange={(e) =>
+          setNewCountry({
+            ...newCountry,
+            datos: { ...newCountry.datos, moneda: e.target.value },
+          })
+        }
       />
       <button onClick={handleAddCountry}>Añadir País</button>
-
       <ul>
         {filteredCountries.map((country, index) => (
           <li key={index}>
-            <Link to={`/countries/${country.id}`}>{country.nombre}</Link> {/* Enlace para ver detalles del país */}
-            <Link to={`/countries/edit/${country.id}`} className="btn edit-btn">Editar</Link> {/* Enlace para editar el país */}
-            <button onClick={() => handleDeleteCountry(country.id)} className="btn delete-button">Eliminar</button> {/* Botón para eliminar el país */}
+            <Link to={`/countries/${country.id}`}>{country.nombre}</Link>{" "}
+            {/* Enlace para ver detalles del país */}
+            <Link to={`/countries/edit/${country.id}`} className="btn edit-btn">
+              Editar
+            </Link>{" "}
+            {/* Enlace para editar el país */}
+            <button
+              onClick={() => handleDeleteCountry(country.id)}
+              className="btn delete-button"
+            >
+              Eliminar
+            </button>{" "}
+            {/* Botón para eliminar el país */}
           </li>
         ))}
       </ul>
